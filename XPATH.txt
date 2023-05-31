@@ -1,0 +1,247 @@
+X PATH is also known as xml path
+
+
+Drowback of X PATH
+1] when targeted element only text then it is not work
+2] when the targeted element are duplicate then attribute of XPath is not support
+
+In XPATH having two types
+
+1] Absolute Path
+2] Relative Path
+-------------------------------------------------------------------------------------------------------------
+1] Absolute path = it is also Known As complete path
+   
+Advantage =
+  a] from the root of the document
+  b] it is very lengthy 
+  c] " / "express Absolute xpath 
+
+
+Drawback of Absolute Xpath
+1] it is very lengthy
+2] time consuming
+3] if any ele is add  or remove the structure then change the xpath or change the efforts..
+----------------------------------------------------------------------
+
+Structure = html structure for absolute example
+<html>
+     <head>
+     </head>
+     <body>
+            <div>-----1
+                 <input type="text"value="A">-----1
+                 <input type="text"value="B">-----2
+            </div>
+       
+             <div>-----2
+                 <input type="text"value="C">
+                 <input type="text"value="D">
+            </div>
+</body>
+</html>
+
+1] Absolute path
+a] single element =
+
+./html/body/div[1]/input[1]----A
+
+html/body/div[1]/input[2]----B
+
+html/body/div[2]/input[1]----C
+
+html/body/div[2]/input[2]----D
+
+b] combination element =
+
+html/body/div[1]/input----AB
+
+html/body/div[2]/input----CD
+
+html/body/div/input[1]----AC
+
+html/body/div/input[2]----BD
+
+html/body/div/input----ABCD
+
+html/body/div[1]/input[1]|html/body/div[2]/input[2]----AD
+
+html/body/div[1]/input[2]| html/body/div[2]/input[1]----BC
+
+------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------
+
+CSS
+
+1] " . " =current project
+2] " / " =represent immediate child 
+3] " // "=any child
+4] " [] "=index value start is one 
+----------------------------------------------------------------------------------------------
+syntax of CSS =
+Tag name[attribute name='attribute value']
+
+drowback
+
+1]  having duplicate we go to xpath
+2]  having only text
+3]  completely dynamic
+
+----------------------------------------------------------------------------------------------------------------
+
+
+2] Relative Path
+   Advantage =
+   a] it is child of the document
+   b] it is short
+   c] " // " express Relative Path
+
+
+
+types of relative path
+
+1] corelative = drowback =if any ele is add  or remove the structure then it occurs the change the efforts.
+2] xpath by attribute =write the based on the Attribute.  syntax=//tagname[@attributename='atta.value']
+3] xpath by contaix
+4] xpath by text
+5] independent,dependent
+6] xpath group
+7] Xpath access
+
+
+
+1] Relative path
+a] single element =
+
+//div[1]/input[1]---A
+
+//div[1]/input[2]----B
+
+//div[2]/input[1]----C
+
+//div[2]/input[2]----D
+
+b] combination element =
+
+//div[1]/input----AB
+
+//div[2]/input----CD
+
+//input[1]----AC
+
+//input[2]----BD
+
+html/body/div/input----ABCD
+
+//div[1]/input[1]|//div[2]/input[2]----AD
+
+//div[1]/input[2]|//div[2]/input[1]----BC
+
+------------------------------------------------------------------------------------------------------
+
+And,OR,Not Operation
+
+<html>
+     <head>
+     </head>
+     <body>
+                 <input type="text"value="A">-----1
+                 <input type="text"value="B">-----2
+                  <input type="submit"value="A">----3------------Button
+</body>
+</html>
+
+
+And,OR,Not Operation
+
+//input[@value='B']------------B
+//input[@type='submit']---------A------Button 
+//input[@type='text']-----------AB
+//input[@value='A'] --------AAbutton
+//input[@type='text' and@ value='A']-------A
+//input[@value='B' or @ type='submit']------BAbutton
+//input----------------------ABAbutton
+//input[@value='A' or @ type='submit']------A(by using Not)
+-------------------------------------------------------------------------------------------------------------
+
+xpath by text
+
+1] its support both text as well as linked text also
+2] it has complete text value 
+3] it is case sensetive
+
+syntax====
+//tagname[text()='textvalue']
+
+this 5 functions are not the dropdown function
+//div[text()='Grocery']
+//div[text()='Mobiles']
+//div[text()='Appliances']
+//div[text()='Travel']
+//div[text()='Top Offers']
+
+---------------------------------------------------------------------------------------------------------------------
+xpath drowback by text
+1] space is not going to not support-----non breakeble space
+2] can't pass the partial text value
+3] text is having partial dynamic value 
+--------------------------------------------------------------------------------------------
+xpath by contains
+Advantage
+
+1] it cover text  and attribute
+it is pass complete & partial text&attribute value
+
+syntax //tagname[contains(text(),'partial text value']-----------------------Text value
+//tagname[contains(@attri.name,'partial att.value')]-------------------------Attribute value
+
+
+Drowback of contains
+
+drowback
+1]when completely dynamic things then x path by function not working
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+INDEPENDENT & DEPENDENT
+
+INDEPENDENT=======fixed
+DEPENDENT==========dynamic
+
+STEPS FOR INDEPENDENT & DEPENDENT====
+1] identify which is fixed & dynamic
+2] write the xpasth for fixed element
+3] update the xpath by backword traversing(/..)to find commonparent for fixed & dynamic.
+4] update the xpath by writing xpath to dynamic element.
+
+
+drowback
+1]when is fixed element its having duplicate,then independent and dependent is not going to work.[XPATH][]--------( [] THIS SQUARE INDICATES THE INDEX VALUE )
+(//DIV[TEXT()='APPLE iPhone 14 (Purple, 128 GB)'])[1]--------------([1]====IS INDEX VALUE,IF THE FOUND THE DUPLICATES THEN USED THE INDEX VALUE FOR FIND THE ONLY ONE)
+2]
+
+
+EXAMPLE OF INDEPENDENT & DEPENDENT====
+//td[text()='Buddhist train']
+//td[text()='Buddhist train']/..
+//td[text()='Buddhist train']/..//td[text()='buddhisttrain@irctc.com']
+//td[text()='Buddhist train']/..//td[text()='+91 9717648718']
+
+
+
+//div[text()='APPLE iPhone 14 (Purple, 128 GB)']
+//div[text()='APPLE iPhone 14 (Purple, 128 GB)']/../..
+//div[text()='APPLE iPhone 14 (Purple, 128 GB)']/../..//div[@class='_30jeq3 _1_WHN1']
+
+---------------------------------------------------------------------------------------------------------------------------
+XPATH OF GROUP
+
+
+
+
+
+
